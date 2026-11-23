@@ -14,3 +14,5 @@
   const university = "UOC";
   console.log(`Hello, ${university}!`);
 })();
+// Import all of Bootstrap’s JS
+import * as bootstrap from 'bootstrap';
