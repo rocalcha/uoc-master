@@ -1,37 +1,114 @@
 <!doctype html>
 
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss" />
     <!-- do not remove this line! -->
-    <title>UOC Boilerplate</title>
+    <title>Jornadas y Concurso Literario</title>
   </head>
-  <body>
-    <div class="uoc-container">
-      <picture>
-        <source
-          srcset="./assets/images/logo.png?as=webp&width=350"
-          type="image/webp"
-        />
+  <body class="c-page c-page--home">
+    <!-- Menú de navegación con componente Navbar de Bootstrap 5 -->
+    <header class="c-header">
+  <nav class="navbar navbar-expand-lg c-navbar" aria-label="Navegación principal">
+    <div class="container-fluid c-navbar__inner">
+      <a class="navbar-brand c-navbar__brand" href="./index.html">
         <img
-          src="./assets/images/logo.png?width=350"
-          alt="Universitat Oberta de Catalunya"
-          class="uoc-logo"
-        />
-      </picture>
-      <h1 class="uoc-title">Hello, UOC!</h1>
-      <p>
-        This is a starter template for the Advanced HTML and CSS Tools courses
-        from the Master's Program in Multimedia Applications and the Master's
-        Program in Web App and Website Development at the Universitat Oberta de
-        Catalunya.
-      </p>
-    </div>
-    <button class="btn btn-primary">Button text</button>
-    <include src="./views/footer.html"></include>
+          src="./assets/images/logo-jl-naranja.jpeg"
+          alt="JL Letras"
+          class="c-navbar__logo"
+        >
+      </a>
+      <!-- Resto de tu navbar -->
+          <button
+            class="navbar-toggler c-navbar__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+            aria-controls="mainNav"
+            aria-expanded="false"
+            aria-label="Abrir o cerrar navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse c-navbar__collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto c-navbar__list">
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link active c-navbar__link" aria-current="page" href="./index.html">Portada</a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./ponentes.html">Ponentes</a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./articulo.html">Jornadas</a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./contacto.html">Concurso</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Zona principal tipo póster (maquetada con CSS Grid + fallback @supports + @container) -->
+    <main class="c-main">
+      <div class="c-poster-container">
+        <article class="c-poster" aria-labelledby="poster-heading">
+          <div class="c-poster__layout">
+            <figure class="c-poster__media">
+              <img
+                src="./assets/images/poster-literario.jpeg"
+                alt="Cartel ilustrado de las Jornadas y Concurso Literario con páginas abiertas y máquina de escribir"
+                class="c-poster__img"
+              />
+              <figcaption class="c-poster__tag">IV Edición · Certamen de Relato</figcaption>
+            </figure>
+
+            <div class="c-poster__header">
+              <p class="c-poster__kicker">Ayuntamiento · Jornadas Literarias</p>
+              <h1 id="poster-heading" class="c-poster__title">
+                Voces en tinta y papel
+              </h1>
+            </div>
+
+            <div class="c-poster__content">
+              <p class="c-poster__lead">
+                Charlas con autores, talleres de escritura creativa y nuestro concurso literario
+                abierto a vecinos y visitantes.
+              </p>
+
+              <!-- Aquí puedes integrar tu dependencia externa (distinta de FontAwesome) -->
+              <div class="c-poster__extra" data-aos="fade-up">
+                <span class="c-poster__dates">15–17 de mayo · Casa de la Cultura</span>
+              </div>
+
+              <div class="c-poster__actions">
+                <a href="./contacto.html" class="c-poster__cta c-poster__cta--primary">
+                  Participar en el concurso
+                </a>
+                <a href="./ponentes.html" class="c-poster__cta c-poster__cta--secondary">
+                  Conocer a los ponentes
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+   
+   <include src="./views/footer.html"></include>
     <script type="module" src="./assets/scripts/main.js"></script>
-    <!-- do not remove this line! -->
   </body>
 </html>
+    
+    
+    
+    
+    
+    
+    
+    

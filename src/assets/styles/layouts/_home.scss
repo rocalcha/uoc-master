@@ -1,60 +1,293 @@
+@use "./functions" as *;
 @use "../variables";
+@use "sass:math";
 
-* {
-  box-sizing: border-box;
-}
 
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
-  padding: 2rem;
-  font-family: variables.$font-family-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: variables.$uoc-bg;
-  color: variables.$uoc-corporate;
-}
 
-.uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: #fff;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+@layer components {
+  .c-poster-container {
+    padding: rem(24) rem(16);
+    background-color: variables.$poster-bg;
+    color: variables.$poster-ink;
 
-.uoc-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
-  height: auto;
-
-  @media (min-width: variables.$mqMinWidth) {
-    max-width: none;
+    @media (min-width: variables.$bp-tablet) {
+      padding: rem(40) rem(32);
+    }
   }
-}
-
-.uoc-title {
-  font-family: variables.$font-family-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: variables.$uoc-corporate;
-
-  @media (min-width: variables.$mqMinWidth) {
-    font-size: 36px;
+  .c-navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(8);
   }
-}
 
-.uoc-footer {
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
-  text-align: center;
+  .c-navbar__logo,
+  .c-footer__logo {
+    display: block;
+    block-size: rem(48);
+    inline-size: auto;
+    border-radius: rem(4);
+  }
+
+  .c-poster {
+    max-width: rem(1160);
+    margin-inline: auto;
+    container-type: inline-size;
+    container-name: poster;
+
+    &__layout {
+      display: flex;
+      flex-direction: column;
+      gap: rem(24);
+    }
+
+    &__media {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: rem(8);
+      background-color: variables.$poster-surface;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    &__tag {
+      position: absolute;
+      inset-block-start: rem(12);
+      inset-inline-start: rem(12);
+      padding: rem(6) rem(12);
+      border-radius: rem(4);
+      background-color: variables.$poster-ink;
+      color: variables.$poster-surface;
+      font-size: rem(12);
+      font-weight: 600;
+    }
+
+    &__header {
+      text-align: center;
+    }
+
+    &__kicker {
+      margin-block: 0 rem(8);
+      color: variables.$poster-accent;
+      font-size: rem(12);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    &__title {
+      margin: 0;
+      font-size: rem(32);
+      line-height: 1.1;
+    }
+
+    &__content {
+      text-align: center;
+    }
+
+    &__lead {
+      margin-block: 0 rem(16);
+      font-size: rem(16);
+      line-height: 1.55;
+    }
+
+    &__extra {
+      margin-block-end: rem(20);
+    }
+
+    &__dates {
+      display: inline-block;
+      padding: rem(6) rem(14);
+      border: 1px solid currentColor;
+      border-radius: rem(999);
+      font-size: rem(13);
+      font-weight: 600;
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: rem(12);
+    }
+
+    &__cta {
+      display: inline-block;
+      padding: rem(12) rem(20);
+      border-radius: rem(6);
+      font-weight: 600;
+      text-decoration: none;
+
+      &--primary {
+        background-color: variables.$poster-accent;
+        color: variables.$poster-surface;
+      }
+
+      &--secondary {
+        border: 2px solid currentColor;
+        background-color: transparent;
+        color: variables.$poster-ink;
+      }
+    }
+  }
+
+  .c-footer {
+    padding: rem(28) rem(16);
+    border-top: 1px solid color-mix(in srgb, variables.$poster-ink 15%, transparent);
+    background-color: variables.$poster-surface;
+    color: variables.$poster-ink;
+
+    @media (min-width: variables.$bp-tablet) {
+      padding: rem(32) rem(32);
+    }
+
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      gap: rem(16);
+      max-width: rem(1160);
+      margin-inline: auto;
+    }
+
+    &__info {
+      margin: 0;
+      font-size: rem(14);
+    }
+
+    &__mail {
+      color: variables.$poster-accent;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline;
+      }
+    }
+
+   &__bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(16);
+      padding-top: rem(16);
+      border-top: 1px solid color-mix(in srgb, variables.$poster-ink 10%, transparent);
+
+      @media (min-width: variables.$bp-tablet) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+
+    &__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: rem(8);
+      font-weight: 700;
+      color: variables.$poster-ink;
+      text-decoration: none;
+    }
+
+    &__nav,
+    &__social {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: rem(12) rem(20);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &__link,
+    &__social-link {
+      color: variables.$poster-ink;
+      font-size: rem(14);
+      text-decoration: none;
+
+      &__social-icon,
+    &__social-img {
+      display: block;
+      inline-size: rem(20);
+      block-size: rem(20);
+    }
+
+      &:hover,
+      &:focus-visible {
+        color: variables.$poster-accent;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @supports not (display: grid) {
+    .c-poster__layout {
+      display: block;
+
+      > * + * {
+        margin-top: rem(24);
+      }
+    }
+  }
+
+  @supports (display: grid) {
+    @media (min-width: variables.$bp-tablet) {
+      .c-poster__layout {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: center;
+        gap: rem(24) rem(32);
+      }
+
+      .c-poster__media {
+        grid-column: 2 / 12;
+        grid-row: 1;
+      }
+
+      .c-poster__header {
+        grid-column: 2 / 12;
+        grid-row: 2;
+      }
+
+      .c-poster__content {
+        grid-column: 3 / 11;
+        grid-row: 3;
+      }
+    }
+
+    @media (min-width: variables.$bp-desktop) {
+      .c-poster__media {
+        grid-column: 6 / 13;
+        grid-row: 1 / 3;
+      }
+
+      .c-poster__header,
+      .c-poster__content {
+        grid-column: 1 / 6;
+        text-align: left;
+      }
+
+      .c-poster__actions {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  @container poster (min-width: 640px) {
+    .c-poster__title {
+      font-size: rem(44);
+    }
+  }
+
+  @container poster (min-width: 900px) {
+    .c-poster__title {
+      font-size: rem(54);
+    }
+  }
 }

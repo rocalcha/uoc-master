@@ -7,5 +7,8 @@
 // @import "some-node-module";
 // @import "@some-company/some-node-module";
 @import "npm:@fortawesome/fontawesome-free/css/all.css";
-// Import all of Bootstrap’s CSS
-@import "bootstrap/scss/bootstrap";
+
+// Import all of Bootstrap’s CSS inside a cascade layer
+@layer generic {
+  @import "bootstrap/scss/bootstrap";
+}
