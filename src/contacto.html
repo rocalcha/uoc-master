@@ -1,0 +1,265 @@
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss" />
+    <!-- do not remove this line! -->
+    <title>Concurso y Contacto · JL Letras</title>
+  </head>
+  <body class="c-page c-page--contact">
+    <header class="c-header">
+      <nav class="navbar navbar-expand-lg c-navbar" aria-label="Navegación principal">
+        <div class="container-fluid c-navbar__inner">
+          <a class="navbar-brand c-navbar__brand" href="./index.html">
+            <img
+              src="./assets/images/logo-jl-naranja.jpeg"
+              alt="JL Letras"
+              class="c-navbar__logo"
+            />
+          </a>
+
+          <button
+            class="navbar-toggler c-navbar__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+            aria-controls="mainNav"
+            aria-expanded="false"
+            aria-label="Abrir o cerrar navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+         <div class="collapse navbar-collapse c-navbar__collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto c-navbar__list">
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./index.html">
+                  <i class="fa-solid fa-book-open me-1" aria-hidden="true"></i> Portada
+                </a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./ponentes.html">
+                  <i class="fa-solid fa-feather-pointed me-1" aria-hidden="true"></i> Ponentes
+                </a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./articulo.html">
+                  <i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i> Jornadas
+                </a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link active c-navbar__link" aria-current="page" href="./contacto.html">
+                  <i class="fa-solid fa-award me-1" aria-hidden="true"></i> Concurso
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+     <main class="c-main c-literary-bg">
+      <span class="c-literary-bg__corner c-literary-bg__corner--tl" aria-hidden="true"></span>
+      <span class="c-literary-bg__corner c-literary-bg__corner--tr" aria-hidden="true"></span>
+      <span class="c-literary-bg__corner c-literary-bg__corner--bl" aria-hidden="true"></span>
+      <span class="c-literary-bg__corner c-literary-bg__corner--br" aria-hidden="true"></span>
+      <div class="c-contact-shell">
+        <section class="c-contact" aria-labelledby="contact-title">
+          <header class="c-contact__header">
+            <span class="badge rounded-pill text-bg-primary c-contact__badge">
+              <i class="fa-solid fa-feather-pointed me-1" aria-hidden="true"></i>
+              Inscripciones y certamen
+            </span>
+            <h1 id="contact-title" class="c-contact__title">
+              Concurso Literario y Contacto
+            </h1>
+            <p class="c-contact__lead">
+              Inscríbete en el certamen o los talleres de creación y escríbenos para resolver cualquier duda sobre las
+              jornadas en Sevilla.
+            </p>
+          </header>
+
+          <div class="c-contact__grid">
+            <section class="c-contact__form-card" aria-labelledby="form-heading">              
+              <h2 id="form-heading" class="c-contact__subtitle">
+                <i class="fa-solid fa-pen-nib me-2" aria-hidden="true"></i>
+                Formulario de participación</h2>
+
+              <form
+                class="c-contact__form"
+                name="jl-letras-contacto"
+                method="POST"
+                data-netlify="true"
+              >
+                <input type="hidden" name="form-name" value="jl-letras-contacto" />
+
+                <div class="mb-3">
+                  <label for="contactName" class="form-label">Nombre y apellidos</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contactName"
+                    name="name"
+                    placeholder="Ej. Clara Mendoza"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactEmail" class="form-label">Correo electrónico</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="contactEmail"
+                    name="email"
+                    placeholder="nombre@ejemplo.com"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactTopic" class="form-label">Motivo del contacto</label>
+                  <select class="form-select" id="contactTopic" name="topic" required>
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="certamen">Participación en el Certamen Literario</option>
+                    <option value="talleres">Inscripción a talleres de creación</option>
+                    <option value="consulta">Consulta general sobre las jornadas</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactWorkTitle" class="form-label">Título del relato o taller (opcional)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contactWorkTitle"
+                    name="workTitle"
+                    placeholder="Solo necesario si presentas obra o pides taller"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactMessage" class="form-label">Mensaje o nota de presentación</label>
+                  <textarea
+                    class="form-control"
+                    id="contactMessage"
+                    name="message"
+                    rows="4"
+                    placeholder="Cuéntanos brevemente tu consulta o propuesta..."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="contactTerms" required />
+                  <label class="form-check-label" for="contactTerms">
+                    Acepto las bases del certamen y el tratamiento de datos para la gestión de las jornadas.
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary c-contact__submit">
+                  <i class="fa-solid fa-paper-plane me-2" aria-hidden="true"></i>
+                  Enviar solicitud
+                </button>
+              </form>
+            </section>
+
+            <aside class="c-contact__info" aria-labelledby="faq-heading">
+              <i class="fa-solid fa-circle-question me-2" aria-hidden="true"></i>
+              <h2 id="faq-heading" class="c-contact__subtitle">
+                
+                Bases rápidas y dudas frecuentes</h2>
+
+              <div class="accordion c-contact__accordion" id="certamenAccordion">
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      ¿Quién puede participar en el certamen?
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    data-bs-parent="#certamenAccordion"
+                  >
+                    <div class="accordion-body">
+                      Cualquier persona mayor de 16 años con un relato inédito escrito en español de entre 800 y 2.500
+                      palabras.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      ¿Las charlas principales requieren entrada?
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#certamenAccordion"
+                  >
+                    <div class="accordion-body">
+                      No. El acceso a las mesas redondas en el Ayuntamiento de Sevilla es libre hasta completar aforo.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      Plazos y lectura de relatos seleccionados
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#certamenAccordion"
+                  >
+                    <div class="accordion-body">
+                      El jurado anunciará los textos finalistas una semana antes del cierre y se leerán en la sesión de
+                      clausura.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <include src="./views/footer.html"></include>
+    <script type="module" src="./assets/scripts/main.js"></script>
+  </body>
+</html>

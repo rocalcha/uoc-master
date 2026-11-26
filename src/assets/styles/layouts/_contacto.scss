@@ -1,1 +1,147 @@
+@use "./functions" as *;
+@use "../variables";
+
 @layer generic, elements, objects, components, utilities;
+
+@layer components {
+  .c-literary-bg {
+    position: relative;
+    overflow: hidden;
+    background-color: variables.$poster-bg;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3Cg fill='none' stroke='%23162b4d' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M20 34c18-18 42-18 60 0s42 18 60 0'/%3E%3Cpath d='M20 58c18-18 42-18 60 0s42 18 60 0'/%3E%3Cpath d='M10 82c14-10 28-10 42 0'/%3E%3Cpath d='M68 96c22-16 48-16 70 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: rem(180) rem(120);
+
+    > :not(.c-literary-bg__corner) {
+      position: relative;
+      z-index: 1;
+    }
+
+    &__corner {
+      position: absolute;
+      z-index: 0;
+      width: clamp(rem(140), 22vw, rem(280));
+      aspect-ratio: 1 / 1;
+      pointer-events: none;
+      background-image: url("../images/filigranas.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.45;
+    }
+
+    &__corner--br {
+      right: 0;
+      bottom: 0;
+    }
+
+    &__corner--bl {
+      bottom: 0;
+      left: 0;
+      transform: scaleX(-1);
+    }
+
+    &__corner--tr {
+      top: 0;
+      right: 0;
+      transform: scaleY(-1);
+    }
+
+    &__corner--tl {
+      top: 0;
+      left: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  .c-contact-shell {
+    max-width: rem(1040);
+    padding: clamp(rem(20), 4cqi, rem(44)) rem(16);
+    margin: 0 auto;
+    container-name: contact-shell;
+    container-type: inline-size;
+  }
+
+  .c-contact {
+    --accent-oklch: oklch(54% 0.16 245);
+    --surface-mix: color-mix(in oklch, var(--accent-oklch) 10%, #{variables.$speaker-card-bg});
+    --border-mix: color-mix(in oklch, var(--accent-oklch) 28%, #{variables.$speaker-card-border});
+
+    padding: clamp(rem(20), 3.5cqi, rem(40));
+    font-family: variables.$font-sans;
+    background-color: variables.$speaker-card-bg;
+    border: rem(1) solid variables.$speaker-card-border;
+    border-radius: rem(12);
+
+    :where(h1, h2, h3) {
+      font-family: variables.$font-serif;
+      color: variables.$poster-ink;
+    }
+
+    :is(.c-contact__lead) {
+      max-width: 65ch;
+      color: variables.$speaker-bio-ink;
+    }
+
+    &__header {
+      margin-bottom: 1.5lh;
+      text-align: center;
+    }
+
+    &__badge {
+      margin-bottom: 0.75lh;
+    }
+
+    &__title {
+      margin-bottom: 0.5lh;
+      font-family: variables.$font-serif;
+      font-size: clamp(rem(28), 4.5cqi, rem(42));
+      line-height: 1.15;
+    }
+
+    &__lead {
+      margin: 0 auto;
+      font-size: clamp(rem(15), 2cqi, rem(18));
+      line-height: 1.6;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: rem(24);
+      align-items: start;
+    }
+
+    &__form-card,
+    &__info {
+      padding: rem(20);
+      background-color: var(--surface-mix);
+      border: rem(1) solid var(--border-mix);
+      border-radius: rem(10);
+    }
+
+    &__subtitle {
+      margin-top: 0;
+      margin-bottom: 1lh;
+      font-family: variables.$font-serif;
+      font-size: clamp(rem(19), 2.4cqi, rem(24));
+    }
+
+    &__submit {
+      background-color: var(--accent-oklch);
+      border-color: var(--accent-oklch);
+
+      &:hover,
+      &:focus-visible {
+        background-color: color-mix(in oklch, var(--accent-oklch) 84%, black);
+        border-color: color-mix(in oklch, var(--accent-oklch) 84%, black);
+      }
+    }
+
+    @container contact-shell (min-width: #{rem(768)}) {
+      &__grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: rem(28);
+      }
+    }
+  }
+}

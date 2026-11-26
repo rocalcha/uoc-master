@@ -1,0 +1,178 @@
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss" />
+    <!-- do not remove this line! -->
+    <title>Ponentes · Jornadas y Concurso Literario</title>
+  </head>
+  <body class="c-page c-page--speakers">
+    <!-- Menú de navegación con componente Navbar de Bootstrap 5 -->
+    <header class="c-header">
+      <nav class="navbar navbar-expand-lg c-navbar" aria-label="Navegación principal">
+        <div class="container-fluid c-navbar__inner">
+          <a class="navbar-brand c-navbar__brand" href="./index.html">
+            <img
+              src="./assets/images/logo-jl-naranja.jpeg"
+              alt="JL Letras"
+              class="c-navbar__logo"
+            />
+          </a>
+
+          <button
+            class="navbar-toggler c-navbar__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+            aria-controls="mainNav"
+            aria-expanded="false"
+            aria-label="Abrir o cerrar navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse c-navbar__collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto c-navbar__list">
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./index.html">
+                  <i class="fa-solid fa-book-open me-1" aria-hidden="true"></i> Portada
+                </a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link active c-navbar__link" aria-current="page" href="./ponentes.html">
+                  <i class="fa-solid fa-feather-pointed me-1" aria-hidden="true"></i> Ponentes
+                </a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./articulo.html">
+                  <i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i> Jornadas
+                </a>
+              </li>
+              <li class="nav-item c-navbar__item">
+                <a class="nav-link c-navbar__link" href="./contacto.html">
+                  <i class="fa-solid fa-award me-1" aria-hidden="true"></i> Concurso
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Sección principal de ponentes maquetada con Flexbox (sin .row ni .col-*) -->
+     <main class="c-main c-literary-bg">
+      <span class="c-literary-bg__corner c-literary-bg__corner--tl" aria-hidden="true"></span>
+      <span class="c-literary-bg__corner c-literary-bg__corner--tr" aria-hidden="true"></span>
+      <span class="c-literary-bg__corner c-literary-bg__corner--bl" aria-hidden="true"></span>
+      <span class="c-literary-bg__corner c-literary-bg__corner--br" aria-hidden="true"></span>
+      <section class="c-speakers" aria-labelledby="speakers-heading">
+        <div class="c-speakers__inner">
+          <h1 id="speakers-heading" class="c-speakers__title">Ponentes</h1>
+
+          <div class="c-speakers__grid">
+            <article class="c-speaker-card" data-aos="fade-up">
+              <div class="c-speaker-card__media">
+                <img
+                  src="./assets/images/ponente-1.jpeg"
+                  alt="Retrato de Ponente Uno en una biblioteca con luz natural"
+                  class="c-speaker-card__img"
+                />
+              </div>
+              <span class="badge rounded-pill text-bg-primary c-speaker-card__badge">Conferencia inaugural</span>
+              <h2 class="c-speaker-card__name">Ponente Uno</h2>
+              <p class="c-speaker-card__bio">
+                Escritora y ensayista invitada a inaugurar las charlas literarias de esta edición.
+              </p>
+            </article>
+
+            <article class="c-speaker-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="c-speaker-card__media">
+                <img
+                  src="./assets/images/ponente-2.jpeg"
+                  alt="Retrato de Ponente Dos con gafas en un estudio literario"
+                  class="c-speaker-card__img"
+                />
+              </div>
+              <span class="badge rounded-pill text-bg-primary c-speaker-card__badge">Novela</span>
+              <h2 class="c-speaker-card__name">Ponente Dos</h2>
+              <p class="c-speaker-card__bio">
+                Autor de novela contemporánea centrado en la construcción de personajes y atmósfera.
+              </p>
+            </article>
+
+            <article class="c-speaker-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="c-speaker-card__media">
+                <img
+                  src="./assets/images/ponente-3.jpeg"
+                  alt="Retrato de Ponente Tres revisando manuscritos en una mesa de taller"
+                  class="c-speaker-card__img"
+                />
+              </div>
+              <span class="badge rounded-pill text-bg-primary c-speaker-card__badge">Taller y jurado</span>
+              <h2 class="c-speaker-card__name">Ponente Tres</h2>
+              <p class="c-speaker-card__bio">
+                Coordinador de talleres de relato breve y jurado del certamen literario.
+              </p>
+            </article>
+
+            <article class="c-speaker-card" data-aos="fade-up">
+              <div class="c-speaker-card__media">
+                <img
+                  src="./assets/images/ponente-4.jpeg"
+                  alt="Retrato de Ponente Cuatro rodeada de libros en un espacio de lectura"
+                  class="c-speaker-card__img"
+                />
+              </div>
+              <span class="badge rounded-pill text-bg-primary c-speaker-card__badge">Crónica y ensayo</span>
+              <h2 class="c-speaker-card__name">Ponente Cuatro</h2>
+              <p class="c-speaker-card__bio">
+                Periodista cultural y editora independiente especializada en crónica y ensayo.
+              </p>
+            </article>
+
+            <article class="c-speaker-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="c-speaker-card__media">
+                <img
+                  src="./assets/images/ponente-5.jpeg"
+                  alt="Retrato de Ponente Cinco"
+                  class="c-speaker-card__img"
+                />
+              </div>
+              <span class="badge rounded-pill text-bg-primary c-speaker-card__badge">Poesía</span>
+              <h2 class="c-speaker-card__name">Ponente Cinco</h2>
+              <p class="c-speaker-card__bio">
+                Poeta y docente centrado en la lectura en voz alta y la creación colectiva.
+              </p>
+            </article>
+
+            <article class="c-speaker-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="c-speaker-card__media">
+                <img
+                  src="./assets/images/ponente-6.jpeg"
+                  alt="Retrato de Ponente Seis"
+                  class="c-speaker-card__img"
+                />
+              </div>
+              <span class="badge rounded-pill text-bg-primary c-speaker-card__badge">Mesa de clausura</span>
+              <h2 class="c-speaker-card__name">Ponente Seis</h2>
+              <p class="c-speaker-card__bio">
+                Editor y crítico literario invitado a la mesa de clausura de las jornadas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <include src="./views/footer.html"></include>
+    <script type="module" src="./assets/scripts/main.js"></script>
+  </body>
+</html>

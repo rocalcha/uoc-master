@@ -9,9 +9,44 @@
   @return math.div($px, 16px) * 1rem;
 }
 
-$poster-bg: #dcebfa;
+// Tipografías de JL Letras
+$font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-serif: "Lora", Georgia, "Times New Roman", serif;
+
+// Paleta y breakpoints base
+$poster-bg: #faf8f5;
 $poster-ink: #162b4d;
 $poster-accent: #1d6fd8;
 $poster-surface: #ffffff;
 $bp-tablet: rem(768);
 $bp-desktop: rem(1024);
+
+// Variables del menú (c-navbar) y componentes
+$navbar-bg: $poster-surface;
+$navbar-ink: $poster-ink;
+$navbar-link-hover: $poster-accent;
+$navbar-link-hover-bg: color.mix($poster-accent, $poster-surface, 12%);
+$navbar-link-active: $poster-accent;
+$navbar-link-active-bg: color.mix($poster-accent, $poster-surface, 18%);
+$navbar-border: #dcebfa;
+$navbar-gap: rem(16);
+$navbar-font: $font-sans;
+
+// Variables de ponentes (opcionales)
+$speaker-card-bg: $poster-surface;
+$speaker-card-border: #dcebfa;
+$speaker-bio-ink: #4a5d7a;
+$speakers-gap: rem(24);
+
+// Fondo sutil de letras / arabescos en Ponentes
+$speakers-bg-pattern-color: rgb(22 43 77 / 4%);
+
+// Variables del componente footer
+$footer-bg: color.mix($poster-bg, $poster-surface, 55%);
+$footer-ink: $poster-ink;
+$footer-muted: $speaker-bio-ink;
+$footer-accent: $poster-accent;
+$footer-border: color.mix($poster-ink, $footer-bg, 14%);
+$footer-hover-bg: color.mix($poster-accent, $footer-bg, 10%);
+$footer-font: $font-sans;
+$footer-brand-font: $font-serif;

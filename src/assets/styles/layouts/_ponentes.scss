@@ -1,0 +1,131 @@
+@use "./functions" as *;
+@use "../variables";
+@use "sass:math";
+
+@layer components {
+  .c-literary-bg {
+    position: relative;
+    overflow: hidden;
+    background-color: variables.$poster-bg;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3Cg fill='none' stroke='%23162b4d' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M20 34c18-18 42-18 60 0s42 18 60 0'/%3E%3Cpath d='M20 58c18-18 42-18 60 0s42 18 60 0'/%3E%3Cpath d='M10 82c14-10 28-10 42 0'/%3E%3Cpath d='M68 96c22-16 48-16 70 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: rem(180) rem(120);
+
+    > :not(.c-literary-bg__corner) {
+      position: relative;
+      z-index: 1;
+    }
+
+    &__corner {
+      position: absolute;
+      z-index: 0;
+      width: clamp(rem(140), 22vw, rem(280));
+      aspect-ratio: 1 / 1;
+      pointer-events: none;
+      background-image: url("../images/filigranas.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.45;
+    }
+
+    &__corner--br {
+      right: 0;
+      bottom: 0;
+    }
+
+    &__corner--bl {
+      bottom: 0;
+      left: 0;
+      transform: scaleX(-1);
+    }
+
+    &__corner--tr {
+      top: 0;
+      right: 0;
+      transform: scaleY(-1);
+    }
+
+    &__corner--tl {
+      top: 0;
+      left: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  .c-speakers {
+    position: relative;
+    padding: rem(40) rem(16);
+    font-family: variables.$font-sans;
+
+    &__inner {
+      position: relative;
+      z-index: 1;
+      max-width: rem(1140);
+      margin: 0 auto;
+    }
+
+    &__title {
+      margin-bottom: rem(32);
+      font-family: variables.$font-serif;
+      color: variables.$poster-ink;
+      text-align: center;
+    }
+
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: variables.$speakers-gap;
+      justify-content: center;
+    }
+  }
+
+  .c-speaker-card {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: rem(16);
+    text-align: center;
+    background-color: variables.$speaker-card-bg;
+    border: rem(1) solid variables.$speaker-card-border;
+    border-radius: rem(12);
+
+    &__media {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      margin-bottom: rem(16);
+      overflow: hidden;
+      border-radius: rem(8);
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__badge {
+      margin-bottom: rem(8);
+    }
+
+    &__name {
+      margin-bottom: rem(8);
+      font-family: variables.$font-serif;
+      color: variables.$poster-ink;
+    }
+
+    &__bio {
+      margin: 0;
+      color: variables.$speaker-bio-ink;
+    }
+
+    @media (min-width: variables.$bp-tablet) {
+      flex: 0 0 calc((100% - #{variables.$speakers-gap}) / 2);
+    }
+
+    @media (min-width: variables.$bp-desktop) {
+      flex: 0 0 calc((100% - (#{variables.$speakers-gap} * 2)) / 3);
+    }
+  }
+}

@@ -1,38 +1,127 @@
 @use "./functions" as *;
 @use "../variables";
+@use "sass:color";
 @use "sass:math";
 
-
-
 @layer components {
+  .c-literary-bg {
+    position: relative;
+    overflow: hidden;
+    background-color: variables.$poster-bg;
+    // Sustituye el SVG de ejemplo por el data:image/svg+xml exacto que usas en Ponentes
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3Cg fill='none' stroke='%23162b4d' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M20 34c18-18 42-18 60 0s42 18 60 0'/%3E%3Cpath d='M20 58c18-18 42-18 60 0s42 18 60 0'/%3E%3Cpath d='M10 82c14-10 28-10 42 0'/%3E%3Cpath d='M68 96c22-16 48-16 70 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: rem(180) rem(120);
+
+    > :not(.c-literary-bg__corner) {
+      position: relative;
+      z-index: 1;
+    }
+
+    &__corner {
+      position: absolute;
+      z-index: 0;
+      width: clamp(rem(140), 22vw, rem(280));
+      aspect-ratio: 1 / 1;
+      pointer-events: none;
+      background-image: url("../images/filigranas.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.45;
+    }
+
+    &__corner--br {
+      right: 0;
+      bottom: 0;
+    }
+
+    &__corner--bl {
+      bottom: 0;
+      left: 0;
+      transform: scaleX(-1);
+    }
+
+    &__corner--tr {
+      top: 0;
+      right: 0;
+      transform: scaleY(-1);
+    }
+
+    &__corner--tl {
+      top: 0;
+      left: 0;
+      transform: rotate(180deg);
+    }
+  }
+
   .c-poster-container {
     padding: rem(24) rem(16);
-    background-color: variables.$poster-bg;
+    font-family: variables.$font-sans;
     color: variables.$poster-ink;
+    background-color: transparent;
 
     @media (min-width: variables.$bp-tablet) {
       padding: rem(40) rem(32);
     }
   }
-  .c-navbar__brand {
-    display: inline-flex;
-    align-items: center;
-    gap: rem(8);
-  }
 
-  .c-navbar__logo,
-  .c-footer__logo {
-    display: block;
-    block-size: rem(48);
-    inline-size: auto;
-    border-radius: rem(4);
+  .c-navbar {
+    font-family: variables.$navbar-font;
+    color: variables.$navbar-ink;
+    background-color: variables.$navbar-bg;
+    border-block-end: rem(1) solid variables.$navbar-border;
+
+    &__brand {
+      display: inline-flex;
+      gap: rem(8);
+      align-items: center;
+    }
+
+    &__logo {
+      display: block;
+      width: auto;
+      max-width: none;
+      height: rem(48);
+      max-height: rem(48);
+      object-fit: contain;
+      border-radius: rem(4);
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: variables.$navbar-gap;
+      align-items: center;
+    }
+
+    .nav-link.c-navbar__link {
+      padding: rem(8) rem(14);
+      font-weight: 500;
+      color: variables.$navbar-ink;
+      text-decoration: none;
+      border-radius: rem(6);
+      transition: background-color 0.2s ease, color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: variables.$navbar-link-hover;
+        background-color: variables.$navbar-link-hover-bg;
+      }
+
+      &.active,
+      &[aria-current="page"] {
+        font-weight: 600;
+        color: variables.$navbar-link-active;
+        background-color: variables.$navbar-link-active-bg;
+      }
+    }
   }
 
   .c-poster {
     max-width: rem(1160);
     margin-inline: auto;
-    container-type: inline-size;
     container-name: poster;
+    container-type: inline-size;
 
     &__layout {
       display: flex;
@@ -44,8 +133,8 @@
       position: relative;
       margin: 0;
       overflow: hidden;
-      border-radius: rem(8);
       background-color: variables.$poster-surface;
+      border-radius: rem(8);
     }
 
     &__img {
@@ -60,11 +149,11 @@
       inset-block-start: rem(12);
       inset-inline-start: rem(12);
       padding: rem(6) rem(12);
-      border-radius: rem(4);
-      background-color: variables.$poster-ink;
-      color: variables.$poster-surface;
       font-size: rem(12);
       font-weight: 600;
+      color: variables.$poster-surface;
+      background-color: variables.$poster-ink;
+      border-radius: rem(4);
     }
 
     &__header {
@@ -73,15 +162,16 @@
 
     &__kicker {
       margin-block: 0 rem(8);
-      color: variables.$poster-accent;
       font-size: rem(12);
       font-weight: 700;
-      letter-spacing: 0.08em;
+      color: variables.$poster-accent;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     &__title {
       margin: 0;
+      font-family: variables.$font-serif;
       font-size: rem(32);
       line-height: 1.1;
     }
@@ -103,53 +193,54 @@
     &__dates {
       display: inline-block;
       padding: rem(6) rem(14);
-      border: 1px solid currentColor;
-      border-radius: rem(999);
       font-size: rem(13);
       font-weight: 600;
+      border: 1px solid currentColor;
+      border-radius: rem(999);
     }
 
     &__actions {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: rem(12);
+      justify-content: center;
     }
 
     &__cta {
       display: inline-block;
       padding: rem(12) rem(20);
-      border-radius: rem(6);
       font-weight: 600;
       text-decoration: none;
+      border-radius: rem(6);
 
       &--primary {
-        background-color: variables.$poster-accent;
         color: variables.$poster-surface;
+        background-color: variables.$poster-accent;
       }
 
       &--secondary {
-        border: 2px solid currentColor;
-        background-color: transparent;
         color: variables.$poster-ink;
+        background-color: transparent;
+        border: 2px solid currentColor;
       }
     }
   }
 
   .c-footer {
-    padding: rem(28) rem(16);
-    border-top: 1px solid color-mix(in srgb, variables.$poster-ink 15%, transparent);
-    background-color: variables.$poster-surface;
-    color: variables.$poster-ink;
+    padding: rem(32) rem(16);
+    font-family: variables.$footer-font;
+    color: variables.$footer-ink;
+    background-color: variables.$footer-bg;
+    border-top: rem(1) solid variables.$footer-border;
 
     @media (min-width: variables.$bp-tablet) {
-      padding: rem(32) rem(32);
+      padding: rem(36) rem(32);
     }
 
     &__inner {
       display: flex;
       flex-direction: column;
-      gap: rem(16);
+      gap: rem(18);
       max-width: rem(1160);
       margin-inline: auto;
     }
@@ -157,26 +248,34 @@
     &__info {
       margin: 0;
       font-size: rem(14);
+      color: variables.$footer-muted;
+      text-align: center;
+
+      @media (min-width: variables.$bp-tablet) {
+        text-align: left;
+      }
     }
 
     &__mail {
-      color: variables.$poster-accent;
       font-weight: 600;
+      color: variables.$footer-accent;
       text-decoration: none;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
 
       &:hover,
       &:focus-visible {
+        color: color.adjust(variables.$footer-accent, $lightness: -10%);
         text-decoration: underline;
       }
     }
 
-   &__bar {
+    &__bar {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: rem(16);
-      padding-top: rem(16);
-      border-top: 1px solid color-mix(in srgb, variables.$poster-ink 10%, transparent);
+      align-items: center;
+      padding-top: rem(18);
+      border-top: rem(1) solid variables.$footer-border;
 
       @media (min-width: variables.$bp-tablet) {
         flex-direction: row;
@@ -187,42 +286,93 @@
 
     &__brand {
       display: inline-flex;
+      gap: rem(10);
       align-items: center;
-      gap: rem(8);
+      font-family: variables.$footer-brand-font;
+      font-size: rem(18);
       font-weight: 700;
-      color: variables.$poster-ink;
+      color: variables.$footer-ink;
       text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: variables.$footer-accent;
+      }
     }
 
-    &__nav,
-    &__social {
+    &__logo {
+      display: block;
+      width: auto;
+      max-width: none;
+      height: rem(48);
+      max-height: rem(48);
+      object-fit: contain;
+      border-radius: rem(4);
+    }
+
+    &__nav {
       display: flex;
       flex-wrap: wrap;
+      gap: rem(8) rem(12);
       align-items: center;
-      gap: rem(12) rem(20);
-      margin: 0;
+      justify-content: center;
       padding: 0;
+      margin: 0;
       list-style: none;
     }
 
-    &__link,
-    &__social-link {
-      color: variables.$poster-ink;
+    &__link {
+      display: inline-block;
+      padding: rem(6) rem(10);
       font-size: rem(14);
+      font-weight: 500;
+      color: variables.$footer-ink;
       text-decoration: none;
+      border-radius: rem(6);
+      transition: background-color 0.2s ease, color 0.2s ease;
 
-      &__social-icon,
+      &:hover,
+      &:focus-visible {
+        color: variables.$footer-accent;
+        background-color: variables.$footer-hover-bg;
+      }
+    }
+
+    &__social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(8);
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    &__social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      inline-size: rem(36);
+      block-size: rem(36);
+      color: variables.$footer-ink;
+      text-decoration: none;
+      border-radius: 50%;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: variables.$footer-accent;
+        background-color: variables.$footer-hover-bg;
+        transform: translateY(rem(-1));
+      }
+    }
+
+    &__social-icon,
     &__social-img {
       display: block;
       inline-size: rem(20);
       block-size: rem(20);
-    }
-
-      &:hover,
-      &:focus-visible {
-        color: variables.$poster-accent;
-        text-decoration: underline;
-      }
     }
   }
 
@@ -241,30 +391,30 @@
       .c-poster__layout {
         display: grid;
         grid-template-columns: repeat(12, minmax(0, 1fr));
-        align-items: center;
         gap: rem(24) rem(32);
+        align-items: center;
       }
 
       .c-poster__media {
-        grid-column: 2 / 12;
         grid-row: 1;
+        grid-column: 2 / 12;
       }
 
       .c-poster__header {
-        grid-column: 2 / 12;
         grid-row: 2;
+        grid-column: 2 / 12;
       }
 
       .c-poster__content {
-        grid-column: 3 / 11;
         grid-row: 3;
+        grid-column: 3 / 11;
       }
     }
 
     @media (min-width: variables.$bp-desktop) {
       .c-poster__media {
-        grid-column: 6 / 13;
         grid-row: 1 / 3;
+        grid-column: 6 / 13;
       }
 
       .c-poster__header,

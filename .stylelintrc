@@ -4,6 +4,7 @@
     "stylelint-config-recess-order"
   ],
   "rules": {
+    "no-invalid-position-at-import-rule": null,
     "selector-class-pattern": "^([a-z]+-)?[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
     "declaration-no-important": true,
     "selector-max-id": 0,

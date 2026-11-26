@@ -1,8 +1,48 @@
+@use "sass:color";
 @import "variables";
+
+@layer generic, elements, objects, components, utilities;
+
 /**
- * Import any npm dependencies in this file
- * see commented examples below
+- Import any npm dependencies in this file
+- see commented examples below
  */
+
+// Personalización de componentes de Bootstrap 5 vía variables Sass (antes de importar Bootstrap)
+// Componente Badge (ponentes.html, articulo.html, contacto.html)
+$badge-font-size: 0.75rem;
+$badge-font-weight: 600;
+$badge-padding-y: 0.45em;
+$badge-padding-x: 0.9em;
+$badge-border-radius: 50rem;
+
+// Componente Accordion (contacto.html)
+$accordion-bg: $poster-surface;
+$accordion-border-color: $speaker-card-border;
+$accordion-border-radius: 0.75rem;
+$accordion-padding-y: 0.95rem;
+$accordion-padding-x: 1.2rem;
+$accordion-button-active-bg: color.mix($poster-accent, $poster-surface, 12%);
+$accordion-button-active-color: $poster-ink;
+
+// Componente Form y Botón (contacto.html)
+$input-bg: $poster-surface;
+$input-color: $poster-ink;
+$input-border-color: $speaker-card-border;
+$input-focus-border-color: $poster-accent;
+$input-border-radius: 0.5rem;
+$form-label-font-weight: 600;
+$form-check-input-checked-bg-color: $poster-accent;
+$form-check-input-checked-border-color: $poster-accent;
+$btn-padding-y: 0.65rem;
+$btn-padding-x: 1.5rem;
+$btn-border-radius: 0.5rem;
+$btn-font-weight: 600;
+
+// Componente Alert (articulo.html)
+$alert-padding-y: 0.9rem;
+$alert-padding-x: 1.25rem;
+$alert-border-radius: 0.75rem;
 
 // @import "some-node-module";
 // @import "@some-company/some-node-module";
